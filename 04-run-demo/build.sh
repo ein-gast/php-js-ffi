@@ -18,6 +18,8 @@ if test ! -f ./src/.env; then
 cp ./src/.env.example ./src/.env
 fi
 
+chmod -R 0777 ./src/storage ./src/bootstrap/cache
+
 echo "Laravel stage..."
 $DC exec laravel php composer.phar install || exit 1
 $DC exec laravel php artisan key:generate || exit 1
